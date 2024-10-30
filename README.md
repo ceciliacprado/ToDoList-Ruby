@@ -1,24 +1,11 @@
-# README
+# Projeto To do list 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Fiz um projeto de To do list - Lista de tarefas. 
 
-Things you may want to cover:
+* Desenvolvido em Ruby on Rails. 
 
-* Ruby version
+* Utilizei bootstrap para ajudar no design. 
 
-* System dependencies
+* Utilizei o banco postgreSQL para armazenar os dados. 
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Desenvolvi esse projeto para treinar minhas habilidades com a linguagem, foi bem desafiador mas aprendi bastante e gostei do resultado :) 
