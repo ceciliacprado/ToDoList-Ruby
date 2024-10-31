@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @task %>
-
-<div>
-  <%= link_to "Edit this task", edit_task_path(@task) %> |
-  <%= link_to "Back to tasks", tasks_path %>
-
-  <%= button_to "Destroy this task", @task, method: :delete %>
+<div class="d-flex flex-column align-items-center justify-content-center vh-100">
+  <h1 class="text-center mt-9 text-success">Tarefa Criada com Sucesso!</h1>
+  <div id="tarefas" class="m-2 d-flex flex-column">
+  <%= render @task %>
+    <div class="d-flex flex-column">
+      <%= link_to "Editar tarefa", edit_task_path(@task), class: "btn btn-primary mt-3" %>
+       <%= link_to "Voltar para Tarefas Pendentes", tasks_path, class: "btn btn-primary mt-3" %>
+       <%= link_to "Ver Tarefas concluídas", tasks_path, class: "btn btn-primary mt-3" %>
+        <%= button_to "Excuir Tarefa", @task, method: :delete, class: "btn btn-danger mt-3"%>
+    </div>
+  </div>
 </div>
