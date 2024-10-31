@@ -1,12 +1,11 @@
 <div id="<%= dom_id task %>">
-  <p>
-    <strong>Nome:</strong>
+  <p class="d-flex flex-column">
+    <strong>Nome</strong>
     <%= task.nome %>
   </p>
-
   <p>
-    <strong>Resolvida:</strong>
-    <%= task.resolvida %>
+    <% unless task.resolvida %>
+      <strong>Tarefa Concluída</strong>
+    <% end %>
   </p>
-
 </div>
