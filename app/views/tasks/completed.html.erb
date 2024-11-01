@@ -1,0 +1,17 @@
+<div class="d-flex flex-column align-items-center justify-content-center vh-100">
+  <h1 class="text-center mt-9">Tarefas Concluídas</h1>
+  <div id="tarefas-concluidas" class="m-2 d-flex flex-column">
+    <% @completed_tasks.each do |task| %>
+      <div class="task-box border p-2 m-2 shadow rounded" style="height: 50px;" id="task_<%= task.id %>">
+        <%= form_with(model: task, local: true, method: :patch) do |form| %>
+          <%= form.check_box :resolvida, class: "form-check-input me-2" %>
+          <%= form.label :resolvida, task.nome %>
+          <%= form.submit "Salvar", class: "btn btn-primary ms-2" %>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="">
+      <%= link_to "Voltar", tasks_path, class: "btn btn-primary mt-3" %>
+    </div>
+  </div>
+</div>
