@@ -33,11 +33,13 @@ class TasksController < ApplicationController
   def update
     respond_to do |format|
       if @task.update(task_params)
-        format.html { redirect_to @task, notice: "Task was successfully updated." }
-        format.json { render :show, status: :ok, location: @task }
+        if @task.resolvida?
+          format.html { redirect_to completed_tasks_path, notice: "Tarefa marcada como concluída." }
+        else
+          format.html { redirect_to tasks_path, notice: "Tarefa atualizada." }
+        end
       else
         format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @task.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -51,7 +53,12 @@ class TasksController < ApplicationController
     end
   end
 
+  def completed
+    @completed_tasks = Task.where(resolvida: true)
+  end
+  
   private
+
     def set_task
       @task = Task.find(params[:id])
     end

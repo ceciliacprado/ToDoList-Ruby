@@ -2,18 +2,21 @@
   <h1 class="text-center mt-9">Tarefas pendentes</h1>
   <div id="tarefas" class="m-2 d-flex flex-column">
     <% @tasks.each do |task| %>
-      <div class="task-box border p-2 m-2 shadow rounded" style="height: 50px;">
-        <%= check_box_tag "resolvida", task.id, task.resolvida, 
-          class: "form-check-input me-2", 
-          data: { action: "change->tasks#toggleResolve" } %>
-        <%= task.nome %>
+      <% if !task.resolvida? %>
+      <div class="task-box border p-2 m-2 shadow rounded" style="height: 50px;" id="task_<%= task.id %>">
+        <%= form_with(model: task, local: true, method: :patch) do |form| %>
+          <%= check_box_tag "task[resolvida]", true, task.resolvida?, class: "form-check-input me-2" %>
+          <%= task.nome %>
+          <%= form.submit "Salvar", class: "btn btn-primary ms-2" %>
+        <% end %>
       </div>
+      <% end %>
     <% end %>
     <div class="">
       <%= link_to "Nova tarefa", new_task_path, class: "btn btn-primary mt-3" %>
     </div>
     <div class="m-1">
-      <%#= link_to "Tarefas concluídas", check_tasks_path, class: "btn btn-primary mt-3" %>
+      <%= link_to "Tarefas concluídas", completed_tasks_path, class: "btn btn-primary mt-3" %>
     </div>
   </div>
 </div>
