@@ -12,10 +12,10 @@
 
   <div>
     <%= form.label "Descrição", style: "display: block" %>
-    <%= form.text_field :nome, class:"border rounded mb-2" %>
+    <%= form.text_area :description, class:"border rounded mb-2" %>
   </div>
 
   <div>
-    <%= form.submit "Criar Tarefa", class:"btn btn-primary mt-3"%>
+    <%= form.submit "Salvar", class:"btn btn-primary mt-3"%>
   </div>
 <% end %>

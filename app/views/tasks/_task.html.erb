@@ -3,9 +3,8 @@
     <strong>Nome</strong>
     <%= task.nome %>
   </p>
-  <p>
-    <% unless task.resolvida %>
-      <strong>Tarefa Concluída</strong>
-    <% end %>
+  <p class="d-flex flex-column">
+    <strong>Descrição</strong>
+    <%= task.description %>
   </p>
 </div>

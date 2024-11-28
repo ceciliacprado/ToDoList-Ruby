@@ -1,12 +1,12 @@
 <% @tasks.each do |task| %>
 <div class="d-flex flex-column align-items-center justify-content-center vh-100">
-  <h1 class="text-center mt-9 text-success">Tarefa <%= task.id %> Criada com Sucesso!</h1>
+  <h1 class="text-center mt-9 text-success">Tarefa <%= @task.id %> Criada com Sucesso!</h1>
   <div id="tarefas" class="m-2 d-flex flex-column">
   <%= render @task %>
     <div class="d-flex flex-column">
       <%= link_to "Editar tarefa", edit_task_path(@task), class: "btn btn-primary mt-3" %>
        <%= link_to "Voltar para Tarefas Pendentes", tasks_path, class: "btn btn-primary mt-3" %>
-       <%= link_to "Ver Tarefas concluídas", tasks_path, class: "btn btn-primary mt-3" %>
+       <%= link_to "Tarefas concluídas", completed_tasks_path, class: "btn btn-primary mt-3" %>
         <%= button_to "Excuir Tarefa", @task, method: :delete, class: "btn btn-danger mt-3"%>
     </div>
   </div>
