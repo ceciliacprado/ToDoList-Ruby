@@ -1,23 +1,32 @@
-<div class="d-flex flex-column align-items-center justify-content-center vh-100">
-  <h1 class="text-center mt-9">Tarefas pendentes</h1>
-  <div id="tarefas" class="m-2 d-flex flex-column">
+<div class="container vh-100 d-flex flex-column align-items-center justify-content-center m-9">
+  <h1 class="text-center mt-4">Olá, bem vindo(a) ao To-do List</h1>
+  <h2 class="text-center mt-3">Tarefas Pendentes</h2>
+  <h6 class="text-center mt-3 mb-4">Após realizar a terefa, marque o campo ao lado do nome e clique no botão "Salvar", assim ela será enviada para a lista de tarefas concluídas!</h6>
+  <div id="tarefas" class="row w-100">
     <% @tasks.each do |task| %>
       <% if !task.resolvida? %>
-      <div class="task-box border p-2 m-2 shadow rounded" style="height: 70px;" id="task_<%= task.id %>">
-        <%= form_with(model: task, local: true, method: :patch, class: "d-flex align-items-center") do |form| %>
-          <%= check_box_tag "task[resolvida]", true, task.resolvida?, class: "form-check-input me-2" %>
-          <%= task.nome %>
-          <%= form.submit "Salvar", class: "btn btn-primary ms-2" %>
-          <%= link_to "Ver tarefa", task_path(task), class: "btn btn-primary ms-2" %>
-        <% end %>
+      <div class="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+        <div class="task-box border p-3 shadow rounded d-flex flex-column align-items-center justify-content-center" style="width: 100%; max-width: 400px;" id="task_<%= task.id %>">
+          <%= form_with(model: task, local: true, method: :patch, class: "d-flex flex-column align-items-center justify-content-center w-100") do |form| %>
+            <div class="d-flex align-items-center justify-content-center w-100">
+               <%= check_box_tag "task[resolvida]", true, task.resolvida?, class: "form-check-input me-2" %>
+        <%= task.nome %>
+            </div>
+            <div class="d-flex mt-4">
+              <%= form.submit "Salvar", class: "btn btn-primary me-2" %>
+        <%= link_to "Ver tarefa", task_path(task), class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
       <% end %>
     <% end %>
-    <div class="">
+  </div>
+  <div class="">
       <%= link_to "Nova tarefa", new_task_path, class: "btn btn-primary mt-3" %>
     </div>
     <div class="m-1">
       <%= link_to "Tarefas concluídas", completed_tasks_path, class: "btn btn-primary mt-3" %>
     </div>
-  </div>
 </div>
+
