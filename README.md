@@ -8,4 +8,4 @@ Fiz um projeto de To do list - Lista de tarefas.
 
 * Utilizei o banco postgreSQL para armazenar os dados. 
 
-Desenvolvi esse projeto para treinar minhas habilidades com a linguagem, foi bem desafiador mas aprendi bastante e gostei do resultado :) 
+Desenvolvi esse projeto para treinar minhas habilidades com a linguagem, foi bem desafiador mas aprendi bastante.
