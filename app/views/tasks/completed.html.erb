@@ -1,17 +1,27 @@
-<div class="d-flex flex-column align-items-center justify-content-center vh-100">
-  <h1 class="text-center mt-9">Tarefas Concluídas</h1>
-  <div id="tarefas-concluidas" class="m-2 d-flex flex-column">
+<div class="container vh-100 d-flex flex-column align-items-center justify-content-center">
+  <h2 class="text-center mt-3">Tarefas Concluídas</h2>
+  <h6 class="text-center mt-3 mb-4">Se quiser que a tarefa volte a ser pendente, desmarque o box ao lado do nome e clique no botão "Salvar"!</h6>
+  <div id="tarefas" class="row w-100">
     <% @completed_tasks.each do |task| %>
-      <div class="task-box border p-2 m-2 shadow rounded" style="height: 50px;" id="task_<%= task.id %>">
-        <%= form_with(model: task, local: true, method: :patch) do |form| %>
-          <%= form.check_box :resolvida, class: "form-check-input me-2" %>
-          <%= form.label :resolvida, task.nome %>
-          <%= form.submit "Salvar", class: "btn btn-primary ms-2" %>
-        <% end %>
+      <% if task.resolvida? %>
+      <div class="col-12 col-md-6 col-lg-4 mb-4 d-flex justify-content-center">
+        <div class="task-box border p-3 shadow rounded d-flex flex-column align-items-center justify-content-center" style="width: 100%; max-width: 400px;" id="task_<%= task.id %>">
+          <%= form_with(model: task, local: true, method: :patch) do |form| %>
+            <div class="d-flex align-items-center justify-content-center w-100">
+              <%= form.check_box :resolvida, class: "form-check-input me-2" %>
+              <%= form.label :resolvida, task.nome %>
+            </div>
+            <div class="d-flex mt-4">
+              <%= form.submit "Salvar", class: "btn btn-primary me-2" %>
+              <%= link_to "Ver tarefa", task_path(task), class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
       </div>
+      <% end %>
     <% end %>
-    <div class="">
-      <%= link_to "Voltar", tasks_path, class: "btn btn-primary mt-3" %>
-    </div>
+  </div>
+  <div class="mt-4">
+    <%= link_to "Voltar para tarefas pendentes", tasks_path, class: "btn btn-primary" %>
   </div>
 </div>
